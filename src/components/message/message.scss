@@ -1,0 +1,66 @@
+message {
+
+  form {
+    padding-bottom: 10px;
+  }
+
+  .input-field {
+    margin-top: 0;
+    margin-bottom: 0px;
+  }
+
+  .btn-file {
+
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    input {
+      height: 100%;
+      position: absolute;
+      overflow: hidden;
+      cursor: pointer;
+      left: 0;
+      top: 0;
+      width: 100%;
+      opacity: 0;
+    }
+  }
+
+  .file-item {
+
+    position: relative;
+    margin-bottom: 10px;
+    height: 60px;
+    border-radius: 5px;
+
+    .file-name {
+      display: block;
+      position: absolute;
+      top: 9px;
+      left: 10px;
+      font-size: 14px;
+      max-width: 75%;
+      height: 20px;
+      overflow: hidden;
+    }
+
+    .file-size {
+      display: block;
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-size: 14px;
+      max-width: 75%;
+      height: 20px;
+      overflow: hidden;
+    }
+
+    .btn {
+      display: block;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+  }
+}

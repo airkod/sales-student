@@ -1,0 +1,57 @@
+<ion-content padding>
+  <div class="logo-block"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m8 offset-m2">
+        <div class="ticket">
+          <div class="ticket-title center-align">
+            Регистрация
+          </div>
+          <form (submit)="register()">
+            <div class="input-field {{ errors.name ? 'has-error' : '' }}">
+              <i class="material-icons prefix">account_circle</i>
+              <input [(ngModel)]="data.name" [ngModelOptions]="{standalone: true}" id="name" name="name" type="text">
+              <label for="name">Имя</label>
+              <span class="error">{{ errors.name }}</span>
+            </div>
+            <div class="input-field {{ errors.email ? 'has-error' : '' }}">
+              <i class="material-icons prefix">email</i>
+              <input [(ngModel)]="data.email" [ngModelOptions]="{standalone: true}" id="email" name="email" type="text">
+              <label for="email">E-mail</label>
+              <span class="error">{{ errors.email }}</span>
+            </div>
+            <div class="input-field {{ errors.phone ? 'has-error' : '' }}">
+              <i class="material-icons prefix">phone</i>
+              <input [(ngModel)]="data.phone" [ngModelOptions]="{standalone: true}" id="phone" name="phone" type="tel">
+              <label for="phone">Телефон</label>
+              <span class="error">{{ errors.phone }}</span>
+            </div>
+            <div class="input-field {{ errors.password ? 'has-error' : '' }}">
+              <i class="material-icons prefix">lock</i>
+              <input [(ngModel)]="data.password" [ngModelOptions]="{standalone: true}" id="password" name="password"
+                     type="password">
+              <label for="password">Пароль</label>
+              <span class="error">{{ errors.password }}</span>
+            </div>
+            <button class="btn btn-block btn-large waves-effect waves-light deep-orange {{ canSubmit() ? '' : 'disabled' }}">
+              Зарегистрироваться
+            </button>
+          </form>
+        </div>
+        <div class="ticket">
+          <div class="ticket-title center-align">
+            Уже есть аккаунт?
+          </div>
+          <div class="row">
+            <div class="col s12 l6">
+              <a (click)="auth();" class="waves-effect waves-light btn btn-block btn-large blue-grey">Войти</a>
+            </div>
+            <div class="col s12 l6">
+              <a (click)="forgotPass();" class="waves-effect waves-light btn btn-block btn-large blue-grey">Забыли пароль?</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

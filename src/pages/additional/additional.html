@@ -1,0 +1,16 @@
+<ion-content padding>
+  <div class="container">
+    <div *ngIf="!additionals.length" class="ticket">
+      <div>На данный момент нет доступных дополнительных занятий.</div>
+    </div>
+    <buy-course></buy-course>
+    <div *ngIf="additionals.length" class="row">
+      <div class="col l4">
+        <list (onSelect)="selectAdditional($event)" [item]="additional" [items]="additionals" [title]="'Дополнительные занятия'"></list>
+      </div>
+      <div class="col m12 l8">
+        <additional (onUpdate)="update($event)" *ngIf="additional" [additional]="additional"></additional>
+      </div>
+    </div>
+  </div>
+</ion-content>

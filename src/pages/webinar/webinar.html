@@ -1,0 +1,32 @@
+<ion-content padding>
+  <div class="container">
+    <buy-course></buy-course>
+    <div *ngIf="!user.tariff" class="ticket">
+      <div>Для участия в вебинарах Вам необходимо приобрести курс.</div>
+    </div>
+    <div *ngIf="loaded && webinars.length == 0" class="ticket">
+      <div>На данный момент нет доступных вебинаров.</div>
+    </div>
+    <div class="row">
+      <div *ngFor="let webinar of webinars" class="col s12 l6">
+        <div class="ticket hoverable">
+          <div class="ticket-title orange-text darken-2">
+            {{ webinar.title }}
+          </div>
+          <trumbowyg [content]="webinar.description"></trumbowyg>
+          <hr *ngIf="user.tariff && user.tariff.type != 'base'">
+          <a *ngIf="user.tariff && user.tariff.type != 'base' && webinar.active" class="btn deep-orange btn-block waves-effect waves-light" href="{{ webinar.link }}"
+             target="_blank">
+            Перейти
+          </a>
+          <a *ngIf="!user.tariff || user.tariff.type == 'base'" class="btn btn-block disabled">
+            Перейти
+          </a>
+          <div *ngIf="!webinar.active" class="label">
+            Будет доступен с {{ webinar.start | dateFormat: '{day} {month} в {hour}:{minute}' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

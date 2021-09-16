@@ -1,0 +1,79 @@
+<div class="nav menu orange darken-2">
+  <div class="logo" (click)="nav.lazy('home')"></div>
+  <ul>
+    <li>
+      <a class="dropdown-trigger white-text waves-effect waves-light" data-target="course-menu">
+        <i class="material-icons">book</i>
+        <span class="hide-on-small-only">Курс</span>
+        <i class="material-icons hide-on-small-only">more_vert</i>
+      </a>
+      <ul id="course-menu" class="dropdown-content">
+        <li>
+          <a class="blue-grey-text waves-effect waves-dark" (click)="nav.lazy('home')">
+            <i class="material-icons">book</i>
+            Занятия
+          </a>
+        </li>
+        <li class="divider" tabindex="-1"></li>
+        <li>
+          <a class="blue-grey-text waves-effect waves-dark" (click)="nav.lazy('webinar')">
+            <i class="material-icons">videocam</i>
+            Вебинары
+          </a>
+        </li>
+        <li class="divider" tabindex="-1"></li>
+        <li>
+          <a class="blue-grey-text waves-effect waves-dark" (click)="nav.lazy('additional')">
+            <i class="material-icons">bookmark</i>
+            Дополнительные занятия
+          </a>
+        </li>
+        <li class="divider" tabindex="-1"></li>
+        <li>
+          <a class="blue-grey-text waves-effect waves-dark" (click)="nav.lazy('chat')">
+            <i class="material-icons">chat</i>
+            Чат с преподавателем
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a class="white-text waves-effect waves-light" (click)="nav.lazy('products')">
+        <i class="material-icons">shopping_cart</i>
+        <span class="hide-on-small-only">Продукты</span>
+      </a>
+    </li>
+    <li>
+      <a class="white-text waves-effect waves-light" (click)="nav.lazy('settings')">
+        <i class="material-icons">account_circle</i>
+        <span class="hide-on-small-only">{{ user.name }}</span>
+      </a>
+    </li>
+    <li>
+      <a class="notification-badge waves-effect waves-light" (click)="notificationVisibility = true;">
+        <i class="material-icons white-text">notifications</i>
+        <span class="new badge red" *ngIf="notifications.length">{{ notifications.length }}</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="side-nav white notifications" [class.active]="notificationVisibility">
+  <h5 class="title orange darken-2 white-text">
+    Уведомления
+    <span class="new badge white blue-grey-text" *ngIf="notifications.length">{{ notifications.length }}</span>
+  </h5>
+  <div class="notifications-list">
+    <div class="empty-notifications" *ngIf="!notifications.length">
+      У вас нет новых уведомлений.
+    </div>
+    <div class="card white hoverable" *ngFor="let notification of notifications" (click)="nav.notification(notification); notificationVisibility = false;">
+      <div class="card-content blue-grey-text">
+        <span class="new badge orange darken-2">{{ notification.dateTime | dateFormat: '{day} {month} в {hour}:{minute}' }}</span>
+        <p>{{ notification.content }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="side-nav-backdrop" (click)="notificationVisibility = false"></div>

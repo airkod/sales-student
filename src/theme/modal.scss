@@ -1,0 +1,28 @@
+.alert-wrapper {
+
+  .alert-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #f57c00;
+  }
+
+  .alert-button {
+    color: #e65100;
+  }
+
+  .alert-sub-title {
+    font-size: 16px;
+    line-height: 1.4rem;
+  }
+
+  .alert-message {
+    display: none !important;
+  }
+}
+
+.modal-wrapper {
+  .divider {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+}

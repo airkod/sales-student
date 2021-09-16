@@ -1,0 +1,33 @@
+<ion-content padding>
+  <div class="container">
+    <div class="ticket">
+      <div class="ticket-title orange-text darken-2">
+        Чат с преподавателем
+      </div>
+      <div class="row">
+        <div *ngFor="let message of messages" class="col s12">
+          <div [class.full]="message.files.length && message.message.length"
+               [class.teacher]="message.teacher != null"
+               class="message z-depth-1 {{ message.from }}">
+            <img *ngIf="message.teacher" class="teacher-avatar " src="{{ message.teacher.image }}"/>
+            <div *ngIf="message.teacher" class="teacher-name orange-text darken-2">{{ message.teacher.name}}</div>
+            <div class="text">
+              <trumbowyg [content]="message.message" [nl2br]="true"></trumbowyg>
+            </div>
+            <div class="date-time">
+              {{ message.dateTime | dateFormat: '{day} {month} в {hour}:{minute}' }}
+            </div>
+            <div *ngIf="message.files.length" class="attached-files">
+              <a *ngFor="let file of message.files" class="btn deep-orange" href="{{ file }}" target="_blank">
+                <i class="material-icons">cloud_download</i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col s12">
+          <message (onMessage)="submit($event)"></message>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

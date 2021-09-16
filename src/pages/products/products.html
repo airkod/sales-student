@@ -1,0 +1,48 @@
+<ion-content padding>
+  <div class="container">
+    <div class="row">
+      <div *ngIf="!products.length" class="empty">
+        Пока продуктов нет, но они скоро появятся!
+      </div>
+      <div *ngFor="let product of products" class="col s12 l6">
+        <div class="card">
+          <div [style.backgroundImage]="'url(' + product.image + ')'" class="card-image waves-effect waves-block waves-light activator"></div>
+          <div class="card-content">
+            <span class="card-title activator orange-text darken-2">
+              {{ product.title }}
+              <i class="material-icons blue-grey-text">info_outline</i>
+            </span>
+            <hr>
+            <p>{{ product.smallDescription }}</p>
+            <hr>
+            <div class="row card-footer">
+              <div class="col s6 price">
+                <b>{{ product.price }} бонусов</b>
+              </div>
+              <div class="col s6 right-align">
+                <a (click)="buy(product)" class="btn deep-orange waves-effect waves-light">Купить</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title orange-text darken-2">
+              {{ product.title }}
+              <i class="material-icons deep-orange-text">close</i>
+            </span>
+            <hr>
+            <trumbowyg [content]="product.description"></trumbowyg>
+            <hr>
+            <div class="row card-footer">
+              <div class="col s6 price">
+                <b>{{ product.price }} бонусов</b>
+              </div>
+              <div class="col s6 right-align">
+                <a (click)="buy(product)" class="btn deep-orange waves-effect waves-light">Купить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

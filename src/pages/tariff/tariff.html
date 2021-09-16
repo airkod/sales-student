@@ -1,0 +1,37 @@
+<ion-content padding>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 l4">
+        <cabinet-menu selected="tariff"></cabinet-menu>
+      </div>
+      <div class="col s12 l8">
+        <div class="ticket">
+          <div class="ticket-title orange-text darken-2">
+            Тарифные планы
+          </div>
+          <div *ngFor="let tariff of tariffs" [class.active]="tariff == user.tariff" class="ticket tariff-plan hoverable">
+            <div class="ticket-title orange-text darken-2">
+              {{ tariff.title }}
+              <span *ngIf="tariff == user.tariff">*</span>
+            </div>
+            <ul class="tariff-texts">
+              <li *ngFor="let text of texts; let i = index" [class.close]="i >= indexes[tariff.type]">
+                <i *ngIf="i >= indexes[tariff.type]" class="material-icons close">close</i>
+                <i *ngIf="i < indexes[tariff.type]" class="material-icons check">check</i>
+                {{ text }}
+              </li>
+            </ul>
+            <hr>
+            <a (click)="buy(tariff)" *ngIf="!user.tariff || tariff.type != user.tariff.type"
+               class="btn btn-block btn-large deep-orange waves-effect waves-light">
+              Купить: {{ tariff.price }} грн.
+            </a>
+            <a *ngIf="user.tariff && tariff.type == user.tariff.type" class="btn btn-block btn-large disabled waves-effect waves-light">
+              Ваш текущий план: {{ tariff.price }} грн.
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

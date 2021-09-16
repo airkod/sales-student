@@ -1,0 +1,6 @@
+<div class="ticket" *ngIf="course">
+  <div class="ticket-title orange-text darken-2">
+    {{ course.title }}
+  </div>
+  <trumbowyg [content]="course.content"></trumbowyg>
+</div>

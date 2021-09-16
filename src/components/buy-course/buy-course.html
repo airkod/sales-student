@@ -1,0 +1,29 @@
+<div class="row" *ngIf="course && !user.tariff">
+  <div class="col">
+    <div class="ticket tariff-plan">
+      <div class="ticket-title orange-text darken-2">
+        Необходимо преобрести курс
+      </div>
+      <div class="row">
+        <div class="col s12 l4" *ngFor="let tariff of tariffs">
+          <div class="ticket hoverable tariff" [class.active]="tariff.popular">
+            <div class="ticket-title center-align">
+              {{ tariff.title }}
+            </div>
+            <ul class="tariff-texts">
+              <li *ngFor="let text of texts; let i = index" [class.close]="i >= indexes[tariff.type]">
+                <i class="material-icons close" *ngIf="i >= indexes[tariff.type]">close</i>
+                <i class="material-icons check" *ngIf="i < indexes[tariff.type]">check</i>
+                {{ text }}
+              </li>
+            </ul>
+            <hr class="footer-hr">
+            <a class="btn btn-block btn-large deep-orange waves-effect waves-light" (click)="buy(tariff)">
+              Купить: {{ tariff.price }} грн.
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+app-liqpay {
+
+  visibility: hidden;
+
+  &.active {
+
+    visibility: hidden;
+
+    #embed, button {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
+    }
+
+    .liqpay-backdrop {
+      opacity: 0.3;
+      visibility: visible;
+    }
+  }
+
+  #embed {
+
+    transition: all .2s ease-in-out;
+    position: absolute;
+    z-index: 10;
+    width: 318px;
+    border-radius: 5px;
+    height: 80vh;
+    left: calc(50% - 159px);
+    opacity: 0;
+    visibility: hidden;
+    top: 80px;
+    transform: translateY(50px);
+    background: white;
+
+    iframe {
+      width: 100% !important;
+      height: 100% !important;
+      background: white;
+      border-radius: 5px;
+    }
+  }
+
+  button {
+    transition: all .2s ease-in-out !important;
+    transform: translateY(50px) !important;
+    position: absolute !important;
+    z-index: 11 !important;
+    top: 60px;
+    left: calc(50% + 159px - 20px);
+    visibility: hidden;
+    opacity: 0 !important;
+  }
+
+  .liqpay-backdrop {
+    transition: all .2s ease-in-out;
+    position: absolute;
+    z-index: 9;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: black;
+    opacity: 0;
+    width: 100%;
+    visibility: hidden;
+  }
+}

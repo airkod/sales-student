@@ -1,0 +1,15 @@
+<ion-content padding>
+  <div class="container">
+    <buy-course></buy-course>
+    <div class="row">
+      <div class="col l4">
+        <list (onSelect)="selectLesson($event)" [item]="lesson" [items]="lessons" [title]="'Занятия'"></list>
+      </div>
+      <div class="col m12 l8">
+        <course *ngIf="!lesson"></course>
+        <lesson *ngIf="lesson" [lesson]="lesson"></lesson>
+        <home-task *ngIf="lesson" [lesson]="lesson"></home-task>
+      </div>
+    </div>
+  </div>
+</ion-content>

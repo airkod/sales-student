@@ -1,0 +1,19 @@
+<div class="ticket">
+  <div class="ticket-title orange-text darken-2">
+    Кабинет
+  </div>
+  <div class="list">
+    <div class="item active" (click)="go('settings')" [class.selected]="selected == 'settings'">
+      Настройки
+    </div>
+    <div class="item active" (click)="go('tariff')" [class.selected]="selected == 'tariff'">
+      Тарифный план
+    </div>
+    <div class="item active" (click)="go('payments')" [class.selected]="selected == 'payments'">
+      Бонусный счет
+    </div>
+    <div class="item active negative" (click)="logout()">
+      Выйти
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+app-loader {
+
+  position: absolute;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  height: 100%;
+  transition: all .2s ease-in-out !important;
+  visibility: hidden;
+  opacity: 0;
+  text-align: center;
+  padding-top: 150px;
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  & > .preloader-wrapper {
+    height: auto;
+  }
+}

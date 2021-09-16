@@ -1,0 +1,14 @@
+<div class="ticket" *ngIf="lesson">
+  <div class="ticket-title orange-text darken-2">
+    {{ lesson.title }}
+  </div>
+  <trumbowyg [content]="lesson.description"></trumbowyg>
+  <a *ngIf="lesson.file" href="{{ lesson.file }}" target="_blank" class="btn btn-large btn-block deep-orange waves-effect waves-light">
+    Скачать методические материалы
+  </a>
+  <trumbowyg [content]="lesson.webinar" [webinar]="true"></trumbowyg>
+  <hr *ngIf="!lesson.active">
+  <div class="label" *ngIf="!lesson.active">
+    Занятие будет доступно {{ lesson.start | dateFormat: '{day} {month} в {hour}:{minute}' }}
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<form (submit)="send()" class="row">
+
+    <div class="col s12">
+
+        <div class="input-field">
+
+            <textarea class="materialize-textarea"
+                      placeholder="Введите сообщение"
+                      (keydown.control.enter)="send()"
+                      [(ngModel)]="message"
+                      [ngModelOptions]="{standalone: true}"></textarea>
+        </div>
+
+    </div>
+
+    <div class="col s12 l6">
+
+        <a class="btn-file btn btn-block btn-large blue-grey">
+            <input type="file" (change)="addFiles()" multiple #inputFile>
+            <i class="material-icons">attach_file</i>
+        </a>
+
+        <div class="file-item orange lighten-4 z-depth-1" *ngFor="let file of files; let i = index">
+
+            <span class="file-name black-text">{{ file.name }}</span>
+            <span class="file-size blue-grey-text lighten-1">{{ file.size | dataSize: 'mb' }}</span>
+
+            <a class="btn btn-floating red darken-2" (click)="removeFile(i)">
+                <i class="material-icons">delete</i>
+            </a>
+        </div>
+
+    </div>
+
+    <div class="col s12 l6">
+        <button class="btn deep-orange btn-large btn-block">Отправить</button>
+    </div>
+
+</form>

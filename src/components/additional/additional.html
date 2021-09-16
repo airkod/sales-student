@@ -1,0 +1,19 @@
+<div class="ticket center-align" *ngIf="!additional.active">
+  <div class="ticket-title left-align orange-text darken-2">
+    Необходимо приобрести дополнительное занятие
+  </div>
+  <a class="btn deep-orange waves-effect waves-light" (click)="buy()">
+    Купить: {{ additional.price }} бонусов
+  </a>
+</div>
+
+<div class="ticket">
+  <div class="ticket-title orange-text darken-2">
+    {{ additional.title }}
+  </div>
+  <trumbowyg [content]="additional.description"></trumbowyg>
+  <a *ngIf="additional.file" target="_blank" href="{{ additional.file }}" class="btn btn-large btn-block deep-orange waves-effect waves-light">
+    Скачать методические материалы
+  </a>
+  <trumbowyg *ngIf="additional.webinar" [content]="additional.webinar" [webinar]="true"></trumbowyg>
+</div>

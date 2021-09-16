@@ -1,0 +1,61 @@
+<ion-content padding>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 l4">
+        <cabinet-menu selected="payments"></cabinet-menu>
+      </div>
+      <div class="col s12 l8">
+        <div class="ticket">
+          <div class="ticket-title orange-text darken-2">
+            Бонусный счет
+          </div>
+          <div class="row">
+            <div class="col s12 l6">
+              Ваш бонусный счет пополняется каждый раз, когда вы получаете оценку за выполненное домашнее задание. 1 балл = 1 бонус. За полученные бонусы вы
+              можете приобрести дополнительные занятия, а также услуги в разделе "Продукты". Бонусный счет вы также можете пополнить самостоятельно из расчета:
+              1 бонус = 1 грн.
+            </div>
+            <div class="col s12 l6 center-align">
+              <h3 class="bonus-amount">{{ user.bonus }}</h3>
+              Доступных бонусов.
+              <br>
+              <div [class.has-error]="sum < minSum" class="input-field">
+                <input [(ngModel)]="sum" class="center-align" type="number">
+              </div>
+              <a (click)="charge()" class="btn btn-large deep-orange waves-effect waves-light">Пополнить</a>
+            </div>
+          </div>
+        </div>
+        <div class="ticket">
+          <div class="ticket-title orange-text darken-2">
+            История платежей
+          </div>
+          <div *ngIf="!payments.length" class="no-items">
+            Вы пока не совершали платежей
+          </div>
+          <ul *ngIf="payments.length" class="collection items-list">
+            <li *ngFor="let payment of payments" class="collection-item">
+              <b>{{ payment.bonus }}</b> грн.
+              <span attr.data-badge-caption="{{ payment.dateTime | dateFormat: '{day} {month} в {hour}:{minute}' }}" class="new badge deep-orange"></span>
+            </li>
+          </ul>
+        </div>
+        <div class="ticket">
+          <div class="ticket-title orange-text darken-2">
+            История покупок
+          </div>
+          <div *ngIf="!history.length" class="no-items">
+            Вы пока не совершали покупок
+          </div>
+          <ul *ngIf="history.length" class="collection items-list history">
+            <li *ngFor="let history of history" class="collection-item">
+              <span class="bonuses"><b>{{ history.bonus }}</b> бонусов</span>
+              <a>{{ history.data }}</a>
+              <span attr.data-badge-caption="{{ history.dateTime | dateFormat: '{day} {month} в {hour}:{minute}' }}" class="new badge deep-orange"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

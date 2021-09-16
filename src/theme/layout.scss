@@ -1,0 +1,28 @@
+html {
+  font-size: unset;
+}
+
+ion-content {
+  background-image: url(../assets/imgs/background.jpg);
+  background-position: center;
+  background-size: cover;
+  font-size: 1rem !important;
+}
+
+.scroll-content {
+  padding-top: 76px !important;
+  overflow-y: auto;
+  color: #37474f;
+}
+
+@media (min-width: 992px) {
+  .scroll-content > .container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 992px) {
+  .scroll-content > .container {
+    width: 100%;
+  }
+}

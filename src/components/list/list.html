@@ -1,0 +1,15 @@
+<div class="ticket">
+  <div class="ticket-title orange-text darken-2">
+    {{ title }}
+  </div>
+  <div class="list">
+    <div class="item"
+         *ngFor="let item of items"
+         (click)="select(item)"
+         [class.selected]="activeItem && activeItem.id == item.id"
+         [class.active]="item.active"
+         [class.notification]="item.notification">
+      {{ item.title }}
+    </div>
+  </div>
+</div>

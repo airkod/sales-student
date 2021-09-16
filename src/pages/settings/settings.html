@@ -1,0 +1,57 @@
+<ion-content padding>
+  <div class="container">
+    <div class="row">
+      <div class="col l4">
+        <cabinet-menu selected="settings"></cabinet-menu>
+      </div>
+      <div class="col m12 l8">
+        <form (submit)="save()">
+          <div class="ticket">
+            <div class="ticket-title orange-text darken-2">Персональные данные</div>
+            <div class="input-field {{ errors.name ? 'has-error' : '' }}">
+              <i class="material-icons prefix">account_circle</i>
+              <input [(ngModel)]="data.name" [ngModelOptions]="{standalone: true}" id="name" name="name" type="text">
+              <label class="active" for="name">Имя</label>
+              <span class="error">{{ errors.name }}</span>
+            </div>
+            <div [class.has-error]="errors.email" class="input-field">
+              <i class="material-icons prefix">email</i>
+              <input [(ngModel)]="data.email" [ngModelOptions]="{standalone: true}" id="email" name="email" type="text">
+              <label class="active" for="email">E-mail</label>
+              <span class="error">{{ errors.email }}</span>
+            </div>
+            <div class="input-field {{ errors.phone ? 'has-error' : '' }}">
+              <i class="material-icons prefix">phone</i>
+              <input [(ngModel)]="data.phone" [ngModelOptions]="{standalone: true}" id="phone" name="phone" type="tel">
+              <label class="active" for="phone">Телефон</label>
+              <span class="error">{{ errors.phone }}</span>
+            </div>
+            <button class="btn btn-block btn-large waves-effect waves-light deep-orange">
+              Сохранить
+            </button>
+          </div>
+        </form>
+        <form (submit)="password()">
+          <div class="ticket">
+            <div class="ticket-title orange-text darken-2">Изменение пароля</div>
+            <div class="input-field {{ errorsPassword.old ? 'has-error' : '' }}">
+              <i class="material-icons prefix">lock</i>
+              <input [(ngModel)]="oldPassword" [ngModelOptions]="{standalone: true}" id="old-password" name="old-password" type="password">
+              <label [class.active]="oldPassword" for="old-password">Введите старый пароль</label>
+              <span class="error">{{ errorsPassword.old }}</span>
+            </div>
+            <div class="input-field {{ errorsPassword.new ? 'has-error' : '' }}">
+              <i class="material-icons prefix">lock</i>
+              <input [(ngModel)]="newPassword" [ngModelOptions]="{standalone: true}" id="new-password" name="new-password" type="password">
+              <label [class.active]="newPassword" for="new-password">Введите новый пароль</label>
+              <span class="error">{{ errorsPassword.new }}</span>
+            </div>
+            <button class="btn btn-block btn-large waves-effect waves-light deep-orange">
+              Изменить
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</ion-content>
